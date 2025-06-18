@@ -1,0 +1,167 @@
+/* Reset and basic styles */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Chat wrapper */
+.chat-wrapper {
+    width: 100%;
+    max-width: 400px;
+    height: 90vh;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+    background-color: #1888d9;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Chat messages container */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    height: 100%;
+    position: relative;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+#messages-area {
+    padding: 16px;
+    overflow-y: auto;
+    flex: 1;
+}
+/* Messages */
+.chat-message {
+    max-width: 80%;
+    padding: 12px 15px;
+    border-radius: 18px;
+    line-height: 1.4;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.chat-message.bot {
+    background-color: #fff;
+    color: #222;
+    align-self: flex-start;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 0.1);
+}
+
+.chat-message.user {
+    background-color: #1888d9;
+    color: white;
+    align-self: flex-end;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 0.15);
+}
+
+/* Buttons container */
+.buttons-container {
+    position: absolute;
+        /* Position absolutely inside chat container */
+        bottom: 0;
+        /* Align at bottom */
+        left: 0;
+        right: 0;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+/* Buttons */
+button.option-button,
+button.back-button,
+button.main-menu-button,
+button.contact-support-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    box-shadow: 0 3px 7px rgb(24 136 217 / 0.35);
+    min-width: 120px;
+    user-select: none;
+}
+
+button.option-button {
+    background-color: #1888d9;
+    color: white;
+}
+
+button.option-button:hover {
+    background-color: #0f5fa8;
+}
+
+button.back-button {
+    background-color: #777;
+    color: white;
+}
+
+button.back-button:hover {
+    background-color: #555;
+}
+
+button.main-menu-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+button.main-menu-button:hover {
+    background-color: #357a38;
+}
+
+button.contact-support-button {
+    background-color: #ff5722;
+    color: white;
+    font-weight: 600;
+}
+
+button.contact-support-button:hover {
+    background-color: #d84315;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .chat-wrapper {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    button.option-button,
+    button.back-button,
+    button.main-menu-button,
+    button.contact-support-button {
+        min-width: 100%;
+    }
+
+    .chat-message {
+        max-width: 95%;
+    }
+}
