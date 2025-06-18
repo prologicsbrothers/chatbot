@@ -40,7 +40,10 @@ body {
 .chat-container {
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
     height: 100%;
     position: relative;
     background-color: #f9f9f9;
@@ -55,7 +58,7 @@ body {
 /* Messages */
 .chat-message {
     max-width: 80%;
-    padding: 12px 15px;
+    padding: 120px 15px;
     border-radius: 18px;
     line-height: 1.4;
     font-size: 14px;
@@ -63,15 +66,19 @@ body {
 }
 
 .chat-message.bot {
-    background-color: #fff;
+    background-color: #fffcfc;
     color: #222;
-    align-self: flex-start;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;   align-self: flex-start;
     box-shadow: 0 1px 5px rgb(0 0 0 / 0.1);
 }
 
 .chat-message.user {
     background-color: #1888d9;
     color: white;
+    padding: 8px;
+    margin-bottom: 12px;
     align-self: flex-end;
     box-shadow: 0 1px 5px rgb(0 0 0 / 0.15);
 }
