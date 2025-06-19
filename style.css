@@ -36,18 +36,18 @@ body {
     letter-spacing: 1px;
 }
 
-/* Chat messages container */
 .chat-container {
     display: flex;
     flex-direction: column;
-    padding-top: 8px;
-    padding-bottom: 10px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 8px;
     height: 100%;
     position: relative;
     background-color: #f9f9f9;
     border-radius: 10px;
+
+    /* ✅ Add these lines */
+    overflow-y: auto;
+    flex-grow: 1;
 }
 
 #messages-area {
@@ -83,22 +83,14 @@ body {
     box-shadow: 0 1px 5px rgb(0 0 0 / 0.15);
 }
 
-/* Buttons container */
 .buttons-container {
-    position: absolute;
-        /* Position absolutely inside chat container */
-        bottom: 0;
-        /* Align at bottom */
-        left: 0;
-        right: 0;
     padding: 10px 15px;
     border-top: 1px solid #ddd;
-    flex-direction: column;
     background-color: #f7f7f7;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: flex-start;
+    flex-direction: column;
 }
 
 /* Buttons */
