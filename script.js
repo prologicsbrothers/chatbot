@@ -164,10 +164,14 @@ let currentMenu = menuData; // start at root
 // ---------- Utility to add chat message ----------
 function addChatMessage(sender, text) {
     const messageDiv = document.createElement("div");
-    messageDiv.classList.add("chat-message", sender); // sender = "user" or "bot"
+    messageDiv.classList.add("chat-message", sender);
     messageDiv.innerText = text;
     chatContainer.appendChild(messageDiv);
-    chatContainer.scrollTop = chatContainer.scrollHeight; // auto scroll
+
+    // ✅ Wait a tiny bit for DOM update, then scroll
+    setTimeout(() => {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }, 50); // 50ms delay helps ensure scroll triggers properly
 }
 
 // ---------- Utility to create buttons for options ----------
