@@ -261,7 +261,7 @@ function addContactSupportButton() {
     contactBtn.innerText = "📞 Contact Support";
     contactBtn.classList.add("contact-support-button");
     contactBtn.onclick = () => {
-        window.open("https://demo-support-website.com/contact", "_blank");
+       window.open("https://t.me/gamerozsupport", "_blank");
     };
     buttonsContainer.appendChild(contactBtn);
 
