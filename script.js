@@ -19,10 +19,32 @@ const menuData = {
                             question: "Payment taking more than 15 minutes",
                             answer: "It usually takes around 15 to 20 minutes for the payment to reflect. If your payment still isn’t verified, kindly go to the 'Verify Payment' section and try again.",
                             subQuestions:[{
-                                id: "payment_verified_no_balance",
-                                question: "How to Verify again!",
-                                answer: "If your payment is verified but the balance is not updated, it might be due to a delay. Please go to the Wallet section, select the same amount you deposited, and click on the 'Verify Payment' button. Upload the correct screenshot and enter the transaction ID. Once submitted, your payment should be verified within 10–15 minutes. If the issue persists, contact support with your payment screenshot and transaction ID."
-                            }
+    id: "payment_verified_no_balance",
+    question: "How to Verify again!",
+    answer: "To re-verify your account, please follow the steps below:\n\n" +
+            "Step 1: Click on the 'Re-verify Now' button.\n" +
+            "Step 2: You will be redirected to a new verification form page.\n" +
+            "Step 3: Submit your details (registered email ID + payment screenshot) on that page.",
+    subQuestions: [
+        {
+            id: "already_reverified",
+            question: "I have already re-verified",
+            answer: "Have you already submitted the re-verification form?\n" +
+                    "If yes, please contact us for manual review.",
+            subQuestions: [
+                {
+                    id: "contact_support_after_reverify",
+                    question: "Contact Us",
+                    answer: "Before contacting us, please make sure you have the following details ready:\n\n" +
+                            "Step 1: Your registered email ID.\n" +
+                            "Step 2: The actual payment screenshot.\n\n" +
+                            "⚠️ **Strict Warning:** If you send a fake payment screenshot or fail verification, your account will be permanently suspended.",
+                }
+            ]
+        }
+    ]
+}
+
                             ]
                         
                         },
@@ -228,6 +250,9 @@ function handleQuestionClick(questionObj) {
                 addChatMessage("bot", questionObj.answer); // ✅ Show the answer immediately
             }
             displayCurrentMenu(); // ✅ Then show the sub-questions
+         if (questionObj.id === "payment_verified_no_balance" && questionObj.question === "How to Verify again!") {
+                addReverifyButton();
+            }
         }, 600);
     }
      else if (questionObj.answer) {
@@ -247,6 +272,46 @@ function handleQuestionClick(questionObj) {
         addChatMessage("bot", "Sorry, I don't have information on that. Please try another option.");
         displayOptions(currentMenu.questions);
     }
+}
+
+function addReverifyButton() {
+    // Clear existing buttons except back and main menu buttons
+    buttonsContainer.innerHTML = "";
+
+    // Create Re-verify Now button
+    const reverifyBtn = document.createElement("button");
+    reverifyBtn.innerText = "🔄 Re-verify Now";
+    reverifyBtn.classList.add("reverify-button");
+    reverifyBtn.onclick = () => {
+        // Open the external URL for re-verification form
+        window.open("https://gameroz.pro/re-verify", "_blank");
+    };
+    buttonsContainer.appendChild(reverifyBtn);
+
+    // Add Back button if possible
+    if (menuStack.length > 0) {
+        const backBtn = document.createElement("button");
+        backBtn.innerText = "⬅️ Back";
+        backBtn.classList.add("back-button");
+        backBtn.onclick = () => {
+            currentMenu = menuStack.pop();
+            displayCurrentMenu();
+            addChatMessage("bot", "What else can I help you with?");
+        };
+        buttonsContainer.appendChild(backBtn);
+    }
+
+    // Add Main Menu button always
+    const mainBtn = document.createElement("button");
+    mainBtn.innerText = "🏠 Main Menu";
+    mainBtn.classList.add("main-menu-button");
+    mainBtn.onclick = () => {
+        currentMenu = menuData;
+        menuStack = [];
+        displayCurrentMenu();
+        addChatMessage("bot", "Back to main menu. How can I assist you?");
+    };
+    buttonsContainer.appendChild(mainBtn);
 }
 
 // ---------- Display current menu's questions ----------
