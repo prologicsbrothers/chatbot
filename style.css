@@ -13,6 +13,23 @@ body {
     height: 100vh;
 }
 
+.reverify-button {
+    background-color: #1888D9; /* Custom blue */
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.reverify-button:hover {
+    background-color: #0f6fb3; /* Slightly darker on hover */
+}
+
+
 /* Chat wrapper */
 .chat-wrapper {
     width: 100%;
